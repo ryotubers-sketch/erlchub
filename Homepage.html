@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ERLC Hub - Helping the ER:LC Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+background:#0b0b14;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
+}
+
+
+/* HEADER */
+
+header{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1200px;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(18,18,28,.8);
+backdrop-filter:blur(12px);
+border:1px solid #2b2b40;
+border-radius:50px;
+z-index:50;
+}
+
+
+.logo{
+font-size:28px;
+font-weight:900;
+color:#fd7000;
+}
+
+
+/* NEW NAVIGATION */
+
+.top-navigation{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+top:-5px;
+pointer-events:none;
+}
+
+
+.top-nav-pill{
+
+display:flex;
+align-items:center;
+gap:5px;
+
+padding:8px;
+
+border-radius:999px;
+
+background:rgba(14,14,16,.35);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.1);
+
+box-shadow:
+0 10px 26px rgba(0,0,0,.35);
+
+pointer-events:auto;
+
+}
+
+
+.top-nav-link{
+
+padding:8px 16px;
+
+border-radius:999px;
+
+font-size:13.5px;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+text-decoration:none;
+
+color:rgba(255,255,255,.55);
+
+transition:.25s;
+
+}
+
+
+.top-nav-link:hover{
+
+color:white;
+
+}
+
+
+.top-nav-link.active{
+
+color:white;
+
+background:rgba(20,20,25,.8);
+
+border:1px solid rgba(255,255,255,.2);
+
+box-shadow:
+0 0 15px rgba(157,77,255,.25);
+
+}
+
+
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+
+.hero h1{
+
+font-size:clamp(60px,10vw,120px);
+
+font-weight:900;
+
+line-height:.9;
+
+}
+
+
+.hero h1 span{
+
+color:#fd7000;
+
+text-shadow:0 0 25px #fd7000;
+
+}
+
+
+.hero p{
+
+margin-top:25px;
+
+max-width:700px;
+
+color:#b8b8b8;
+
+font-size:18px;
+
+line-height:1.7;
+
+}
+
+
+
+.buttons{
+
+margin-top:40px;
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+
+
+.btn{
+
+padding:15px 35px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+
+.primary{
+
+background:#fd7000;
+
+color:white;
+
+box-shadow:0 0 30px #fd7000;
+
+}
+
+
+.primary:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+.secondary{
+
+border:1px solid #444;
+
+color:white;
+
+}
+
+
+.secondary:hover{
+
+border-color:#ea6f0a;
+
+}
+
+
+
+/* STATS */
+
+.stats{
+
+display:flex;
+
+gap:25px;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+padding:70px 20px;
+
+}
+
+
+
+.card{
+
+background:#151520;
+
+padding:30px;
+
+width:220px;
+
+border-radius:18px;
+
+border:1px solid #2b2b40;
+
+transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ea6f0a;
+
+}
+
+
+
+.card h2{
+
+font-size:36px;
+
+color:#ea6f0a;
+
+margin-bottom:8px;
+
+}
+
+
+
+/* FOOTER */
+
+footer{
+
+padding:30px;
+
+text-align:center;
+
+color:#777;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+header{
+
+padding:15px 20px;
+
+}
+
+
+.top-navigation{
+
+display:none;
+
+}
+
+
+.logo{
+
+font-size:22px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+<div class="logo">
+ERLC HUB
+</div>
+
+<nav class="top-navigation">
+
+<div class="top-nav-pill">
+
+
+<a class="top-nav-link active" href="#">
+Nav 1
+</a>
+
+<a class="top-nav-link" href="#">
+Nav 2
+</a>
+
+
+</div>
+
+</nav>
+
+
+</header>
+
+
+
+<section class="hero">
+
+
+<h1>
+
+ERLC<br>
+<span>HUB</span>
+
+</h1>
+
+
+<p>
+
+Join thousands of players in an immersive Emergency Response: Liberty County roleplay experience with exclusive events, resources, giveaways, and a friendly community.
+
+</p>
+
+
+
+<div class="buttons">
+
+
+<a href="#" class="btn primary">
+Our Services
+</a>
+
+
+<a href="#" class="btn secondary">
+Join Discord
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<section class="stats">
+
+
+<div class="card">
+
+<h2>
+Many
+</h2>
+
+<p>
+Resources
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+Lots of
+</h2>
+
+<p>
+Support
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>
+Weekly
+</h2>
+
+<p>
+Events
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+100%
+</h2>
+
+<p>
+Roleplay
+</p>
+
+</div>
+
+
+
+</section>
+
+
+
+
+<footer>
+
+© 2026 ERLC Hub - Ibegoodformysistera
+
+</footer>
+
+
+
+</body>
+
+</html>
