@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERLC Hub - 404</title>
+<link rel="icon" href="https://erlc.pages.dev/icon.png">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    background: #0f0f0f;
+}
+.glow {
+    position: absolute;
+    filter: blur(150px);
+    opacity: 0.4;
+    border-radius: 50%;
+}
+.bg-primary { background: #fd7000; }
+.bg-secondary { background: #1a1a1a; }
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+}
+
+.btn-primary {
+    background: #fd7000;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: #fd7000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body class="text-white relative overflow-x-hidden">
+
+<!-- Glow Background -->
+<div class="glow bg-primary top-0 left-[10%] w-[400px] h-[400px]"></div>
+<div class="glow bg-primary bottom-0 right-[10%] w-[400px] h-[400px]"></div>
+
+<!-- Navbar -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-50">
+    <div class="bg-secondary/70 backdrop-blur-md rounded-full border border-white/15 flex justify-between items-center px-6 py-3 shadow-sm">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+            <img src="https://erlc.pages.dev/icon.png" alt="Logo" class="h-10 w-auto object-contain">
+            <span class="text-xl font-bold text-primary hidden sm:block">
+                ERLC Hub
+            </span>
+        </a>
+
+        <div class="hidden md:flex gap-6 text-white/70">
+            <a href="/team" class="hover:text-white">Team</a>
+            <a href="https://erlc.gg/join/HuB" class="hover:text-white">ER:LC</a>
+            <a href="/products">Products</a>
+            <a href="/partner" class="hover:text-white">Partner</a>
+            <a href="/apply" class="hover:text-white">Apply</a>
+            <a href="/guidelines" class="hover:text-white">Guidelines</a>
+        </div>
+
+        <a href="https://discord.gg/Q8X9F7fpvB" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold">
+            Join Discord
+        </a>
+
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<main class="flex-1 overflow-visible">
+
+<section class="pt-32 pb-20 px-6 relative">
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
+
+        <!-- LEFT TEXT -->
+        <div class="text-left relative z-20 animate-[fadeIn_1s_ease-in-out]">
+
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Uh oh! <span class="text-[#fd7000]">404 Error</span>
+            </h1>
+
+            <p class="text-white/60 mb-8">
+                Looks like you tried to find a page that does not exist!
+            </p>
+
+            <!-- BUTTONS -->
+            <div class="flex gap-4 flex-wrap">
+
+                  <a href="https://erlc.pages.dev"
+                   class="bg-[#fd7000] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#fd72009c] transition">
+                    Go Home
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="relative flex justify-center md:justify-end">
+
+            <div class="absolute w-[500px] h-[500px] bg-[#fd7000] opacity-20 blur-[120px] rounded-full -z-10"></div>
+
+            <img src="https://erlc.pages.dev/images/HighrockInfoCentreTilt.png"
+                 alt="HighrockInfoCentre.png"
+                 class="w-[110%] max-w-[650px] md:translate-x-10 md:scale-110 rounded-2xl shadow-2xl relative z-10 animate-[fadeIn_1.2s_ease-in-out]">
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-secondary/30 backdrop-blur-md border-t border-white/10 text-white px-6 py-12">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+      
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/10 mt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40 px-6 py-6 max-w-7xl mx-auto">
+        <p>© 2026 ERLC Hub. Website by Ibegoodformysistera. All rights reserved.</p>
+</div>
+    </div>
+</footer>
+
+</body>
+</html>
