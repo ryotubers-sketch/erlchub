@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERLC Hub - Helping the ER:LC Communnity</title>
+<link rel="icon" href="https://erlc.pages.dev/icon.png">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    background: #0f0f0f;
+}
+.glow {
+    position: absolute;
+    filter: blur(150px);
+    opacity: 0.4;
+    border-radius: 50%;
+}
+.bg-primary { background: #fd7000; }
+.bg-secondary { background: #1a1a1a; }
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+}
+
+.btn-primary {
+    background: #fd7000;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: #fd7000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body class="text-white relative overflow-x-hidden">
+
+<!-- Glow Background -->
+<div class="glow bg-primary top-0 left-[10%] w-[400px] h-[400px]"></div>
+<div class="glow bg-primary bottom-0 right-[10%] w-[400px] h-[400px]"></div>
+
+<!-- Navbar -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-50">
+    <div class="bg-secondary/70 backdrop-blur-md rounded-full border border-white/15 flex justify-between items-center px-6 py-3 shadow-sm">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-3">
+            <img src="https://erlc.pages.dev/icon.png" alt="Logo" class="h-10 w-auto object-contain">
+            <span class="text-xl font-bold text-primary hidden sm:block">
+                ERLC Hub
+            </span>
+        </a>
+
+        <div class="hidden md:flex gap-6 text-white/70">
+            <a href="/team" class="hover:text-white">Team</a>
+            <a href="https://erlc.gg/join/HuB" class="hover:text-white">ER:LC</a>
+            <a href="/products">Products</a>
+            <a href="/partner" class="hover:text-white">Partner</a>
+            <a href="/apply" class="hover:text-white">Apply</a>
+            <a href="/guidelines" class="hover:text-white">Guidelines</a>
+        </div>
+
+        <a href="https://discord.gg/Q8X9F7fpvB" class="btn-primary px-4 py-2 rounded-full text-sm font-semibold">
+            Join Discord
+        </a>
+
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<main class="flex-1 overflow-visible">
+
+<section class="pt-32 pb-20 px-6 relative">
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center relative">
+
+        <!-- LEFT TEXT -->
+        <div class="text-left relative z-20 animate-[fadeIn_1s_ease-in-out]">
+
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Welcome <span class="text-[#fd7000]">Staff</span>
+            </h1>
+
+            <p class="text-white/60 mb-8">
+                Welcome to the staff acsess panel!
+            </p>
+
+            <!-- BUTTONS -->
+            <div class="flex gap-4 flex-wrap">
+
+                  <a href="https://erlc.gg/join/LAAA"
+                   class="bg-[#fd7000] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#fd72009c] transition">
+                    View Products
+                </a>
+
+                <a href="https://discord.gg/LAAA"
+                   class="border border-white/20 px-6 py-3 rounded-full hover:bg-white/10 transition">
+                    Join Discord
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="relative flex justify-center md:justify-end">
+
+            <div class="absolute w-[500px] h-[500px] bg-[#fd7000] opacity-20 blur-[120px] rounded-full -z-10"></div>
+
+            <img src="https://erlc.pages.dev/images/HighrockInfoCentreTilt.png"
+                 alt="HighrockInfoCentre.png"
+                 class="w-[110%] max-w-[650px] md:translate-x-10 md:scale-110 rounded-2xl shadow-2xl relative z-10 animate-[fadeIn_1.2s_ease-in-out]">
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-20 space-y-20">
+
+    <!-- Section 1 -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
+
+        <!-- Text -->
+        <div class="md:w-1/2">
+            <i class="fas fa-shield-alt text-4xl mb-4 text-[#fd7000]"></i>
+            <h2 class="text-3xl font-bold mb-4">Friendly Staff</h2>
+            <p class="text-white/70 text-lg">
+                Our staff are always here to help whenever you need assistance.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-1/2 relative">
+            <img src="https://i.ibb.co/MyrrQ5DB/Screenshot-2026-04-07-at-9-22-47-pm.png"
+                 class="rounded-xl w-full h-80 object-cover">
+        </div>
+
+    </div>
+
+    <!-- Section 2 -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row-reverse items-center gap-12 px-6">
+
+        <!-- Text -->
+        <div class="md:w-1/2">
+            <i class="fas fa-car text-4xl mb-4 text-[#fd7000]"></i>
+            <h2 class="text-3xl font-bold mb-4">Many Liveries</h2>
+            <p class="text-white/70 text-lg">
+                We have over 300 livery's on all teams.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-1/2 relative">
+            <img src="https://i.ibb.co/vxQbzmBf/Screenshot-2026-06-28-at-5-54-20-pm.png"
+                 class="rounded-xl w-full h-80 object-cover">
+        </div>
+
+    </div>
+
+    <!-- Section 3 -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
+
+        <!-- Text -->
+        <div class="md:w-1/2">
+            <i class="fas fa-user text-4xl mb-4 text-[#fd7000]"></i>
+            <h2 class="text-3xl font-bold mb-4">Many Members</h2>
+            <p class="text-white/70 text-lg">
+                Our membercount <4 days from release was 350+. We are growing fast.
+            </p>
+        </div>
+
+        <!-- Image -->
+        <div class="md:w-1/2 relative">
+            <img src="https://i.ibb.co/sDQcQWZ/Screenshot-2026-06-28-at-5-51-20-pm.png"
+                 class="rounded-xl w-full h-80 object-cover">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Reviews -->
+<section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10">Our Reviews</h2>
+
+    <div class="max-w-4xl mx-auto space-y-6">
+
+        <div class="card p-6">
+            ★★★★★ | Cool server nice liveries - Ibegoodformysistera
+        </div>
+
+        <div class="card p-6">
+            ★★★★★ | everyone is friendly in all the WL deps your not left out and there is some good roleplays which can happen within the WL deps - digitaldanno
+        </div>
+
+        <div class="card p-6">
+            ★★★★★ | everyone within this server will treat you with respect and kindness respecting everything and you will have a lot of banter with each one of the members staff team also will understand a lot of situations - digitaldanno
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 text-center">
+
+    <h2 class="text-3xl font-bold mb-4">Ready to roleplay?</h2>
+
+    <p class="text-white/60 mb-8 max-w-xl mx-auto">
+        Join and start the best roleplay's you can imagine!
+    </p>
+
+    <!-- CTA BUTTONS (MATCHED SPACING) -->
+    <div class="flex justify-center gap-4 flex-wrap">
+
+        <a href="https://discord.gg/rookie1"
+           class="border border-white/20 px-6 py-3 rounded-full hover:bg-white/10 transition">
+            Join Discord
+        </a>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer class="bg-secondary/30 backdrop-blur-md border-t border-white/10 text-white px-6 py-12">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+        
+        <!-- About Section -->
+        <div class="md:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="https://erlc.pages.dev/icon.png" alt="LA Roleplay Logo" class="h-12 w-auto object-contain">
+                <h2 class="text-xl font-bold">ERLC Hub</h2>
+            </div>
+            <p class="text-sm text-white/60 leading-relaxed">
+                Description Here
+            </p>
+        </div>
+
+        <!-- Resources -->
+        <div>
+            <h3 class="font-semibold text-white mb-3">Resources</h3>
+            <ul class="space-y-1 text-sm text-white/70">
+                <li><a href="#" class="nav-link">Text</a></li>
+                <li><a href="#" class="nav-link">Text</a></li>
+                <li><a href="https://discord.gg/Q8X9F7fpvB" class="nav-link">Discord</a></li>
+            </ul>
+        </div>
+
+        <!-- Community -->
+        <div>
+            <h3 class="font-semibold text-white mb-3">Community</h3>
+            <ul class="space-y-1 text-sm text-white/70">
+                <li><a href="#" class="nav-link">Text</a></li>
+                <li><a href="#" class="nav-link">Text</a></li>
+                <li><a href="https://discord.gg/Q8X9F7fpvB" class="nav-link">Support</a></li>
+            </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+            <h3 class="font-semibold text-white mb-3">Policies</h3>
+            <ul class="space-y-1 text-sm text-white/70">
+                <li><a href="#" class="nav-link">Privacy Policy</a></li>
+                <li><a href="#" class="nav-link">Terms & Conditions</a></li>
+                <li><a href="#" class="nav-link">Community Guidelines</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/10 mt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40 px-6 py-6 max-w-7xl mx-auto">
+        <p>© 2026 ERLC Hub. Website by Ibegoodformysistera. All rights reserved.</p>
+</div>
+    </div>
+</footer>
+
+</body>
+</html>
