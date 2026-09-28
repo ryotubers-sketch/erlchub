@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ERLC Whiteboard</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #1a1a1a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Scrollable whiteboard */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* =========================
+   WHITEBOARD
+========================= */
+
+.whiteboard {
+    position: relative;
+
+    width: 100%;
+    min-height: 2400px;
+
+    padding-top: 40px;
+    padding-bottom: 100px;
+
+    /* Dots */
+    background-color: #1a1a1a;
+
+    background-image: radial-gradient(
+        circle,
+        rgba(255,255,255,0.18) 2px,
+        transparent 2px
+    );
+
+    background-size: 32px 32px;
+}
+
+/* =========================
+   FRONT / BACK
+========================= */
+
+.title {
+    text-align: center;
+
+    font-size: 46px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    margin: 0 0 25px;
+
+    color: white;
+}
+
+.back-title {
+    margin-top: 35px;
+}
+
+/* =========================
+   SIDE LINES
+========================= */
+
+.side-line {
+    position: absolute;
+
+    top: 120px;
+    bottom: 150px;
+
+    width: 4px;
+
+    background: rgba(255,255,255,0.55);
+
+    border-radius: 10px;
+}
+
+.side-line.left {
+    left: calc(50% - 150px);
+}
+
+.side-line.right {
+    left: calc(50% + 150px);
+}
+
+/* =========================
+   CENTER BOARD
+========================= */
+
+.board {
+    position: relative;
+
+    width: 280px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+}
+
+/* =========================
+   BOXES
+========================= */
+
+.box {
+    width: 92px;
+    min-height: 58px;
+
+    padding: 8px 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: 8px;
+    line-height: 1.15;
+    font-weight: 800;
+
+    border-radius: 2px;
+
+    background: transparent;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    cursor: pointer;
+}
+
+/* =========================
+   POLICE
+========================= */
+
+.police {
+    border: 3px solid #1d4ed8;
+    color: #1d4ed8;
+}
+
+.police:hover {
+    background: #1d4ed8;
+    color: white;
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 25px rgba(29,78,216,0.45);
+}
+
+/* =========================
+   FIREFIGHTER
+========================= */
+
+.fire {
+    border: 3px solid #dc2626;
+    color: #dc2626;
+}
+
+.fire:hover {
+    background: #dc2626;
+    color: white;
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 25px rgba(220,38,38,0.45);
+}
+
+/* =========================
+   STAFF
+========================= */
+
+.staff {
+    border: 3px solid #facc15;
+    color: #facc15;
+}
+
+.staff:hover {
+    background: #facc15;
+    color: #111;
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 25px rgba(250,204,21,0.45);
+}
+
+/* =========================
+   SWAT
+========================= */
+
+.swat {
+    border: 3px solid #facc15;
+    color: #facc15;
+}
+
+.swat:hover {
+    background: #facc15;
+    color: #111;
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 25px rgba(250,204,21,0.45);
+}
+
+/* =========================
+   CONNECTOR LINE
+========================= */
+
+.connector {
+    width: 3px;
+    height: 14px;
+
+    background: rgba(255,255,255,0.5);
+
+    flex-shrink: 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .title {
+        font-size: 38px;
+    }
+
+    .side-line.left {
+        left: 18%;
+    }
+
+    .side-line.right {
+        left: 82%;
+    }
+
+    .board {
+        width: 220px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="whiteboard">
+
+    <!-- SIDE LINES -->
+    <div class="side-line left"></div>
+    <div class="side-line right"></div>
+
+    <!-- FRONT -->
+    <h1 class="title">FRONT</h1>
+
+    <!-- MAIN BOARD -->
+    <div class="board">
+
+        <!-- STAFF -->
+        <div class="box staff">
+            STAFF<br>
+            CAR
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- POLICE -->
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [CHEVRON]<br>
+            CANON<br>
+            PPV 2021
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [CHEVRON]<br>
+            CANON<br>
+            PPV 2021
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- FIRE -->
+        <div class="box fire">
+            FIRE CAR<br>
+            MOBILE<br>
+            COMMAND<br>
+            CENTER
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box fire">
+            FIRE CAR<br>
+            [REDLINE]<br>
+            E.R.O.<br>
+            REAR<br>
+            LADDER
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box fire">
+            FIRE CAR<br>
+            [REDLINE]<br>
+            E.R.O.<br>
+            REAR<br>
+            LADDER
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- SWAT -->
+        <div class="box swat">
+            SWAT<br>
+            BEARCAT
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box swat">
+            SWAT<br>
+            BEARCAT
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- POLICE -->
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [DODGE]<br>
+            CHARGER<br>
+            Pursuit<br>
+            Interceptor
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- EMS -->
+        <div class="box fire">
+            EMS<br>
+            [FALCON]<br>
+            Global<br>
+            450<br>
+            Ambulance
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- POLICE -->
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+        <div class="connector"></div>
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+    </div>
+
+    <!-- BACK -->
+    <h1 class="title back-title">BACK</h1>
+
+</div>
+
+</body>
+</html>
