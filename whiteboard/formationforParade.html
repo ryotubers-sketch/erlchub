@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ERLC Whiteboard</title>
+<title>Big Parade Formation Whiteboard</title>
 
 <style>
+
+/* =========================
+   GENERAL
+========================= */
 
 * {
     box-sizing: border-box;
@@ -23,12 +28,13 @@ body {
 body {
     background: #1a1a1a;
     color: white;
+
     font-family: Arial, Helvetica, sans-serif;
 
-    /* Scrollable whiteboard */
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 
 /* =========================
    WHITEBOARD
@@ -43,9 +49,9 @@ body {
     padding-top: 40px;
     padding-bottom: 100px;
 
-    /* Dots */
     background-color: #1a1a1a;
 
+    /* Dot grid */
     background-image: radial-gradient(
         circle,
         rgba(255,255,255,0.18) 2px,
@@ -55,8 +61,9 @@ body {
     background-size: 32px 32px;
 }
 
+
 /* =========================
-   FRONT / BACK
+   FRONT / BACK TITLES
 ========================= */
 
 .title {
@@ -75,6 +82,7 @@ body {
 .back-title {
     margin-top: 35px;
 }
+
 
 /* =========================
    SIDE LINES
@@ -101,6 +109,7 @@ body {
     left: calc(50% + 150px);
 }
 
+
 /* =========================
    CENTER BOARD
 ========================= */
@@ -119,15 +128,16 @@ body {
     gap: 14px;
 }
 
+
 /* =========================
    BOXES
 ========================= */
 
 .box {
-    width: 92px;
+    width: 115px;
     min-height: 58px;
 
-    padding: 8px 5px;
+    padding: 9px 7px;
 
     display: flex;
     align-items: center;
@@ -139,9 +149,12 @@ body {
     line-height: 1.15;
     font-weight: 800;
 
-    border-radius: 2px;
+    border-radius: 3px;
 
     background: transparent;
+
+    /* WHITE TEXT BEFORE HOVER */
+    color: white;
 
     transition:
         background 0.2s ease,
@@ -152,13 +165,14 @@ body {
     cursor: pointer;
 }
 
+
 /* =========================
    POLICE
 ========================= */
 
 .police {
     border: 3px solid #1d4ed8;
-    color: #1d4ed8;
+    color: white;
 }
 
 .police:hover {
@@ -170,13 +184,14 @@ body {
     box-shadow: 0 0 25px rgba(29,78,216,0.45);
 }
 
+
 /* =========================
    FIREFIGHTER
 ========================= */
 
 .fire {
     border: 3px solid #dc2626;
-    color: #dc2626;
+    color: white;
 }
 
 .fire:hover {
@@ -188,13 +203,14 @@ body {
     box-shadow: 0 0 25px rgba(220,38,38,0.45);
 }
 
+
 /* =========================
    STAFF
 ========================= */
 
 .staff {
     border: 3px solid #facc15;
-    color: #facc15;
+    color: white;
 }
 
 .staff:hover {
@@ -206,13 +222,14 @@ body {
     box-shadow: 0 0 25px rgba(250,204,21,0.45);
 }
 
+
 /* =========================
    SWAT
 ========================= */
 
 .swat {
     border: 3px solid #facc15;
-    color: #facc15;
+    color: white;
 }
 
 .swat:hover {
@@ -224,8 +241,9 @@ body {
     box-shadow: 0 0 25px rgba(250,204,21,0.45);
 }
 
+
 /* =========================
-   CONNECTOR LINE
+   CONNECTOR LINES
 ========================= */
 
 .connector {
@@ -236,6 +254,7 @@ body {
 
     flex-shrink: 0;
 }
+
 
 /* =========================
    MOBILE
@@ -259,9 +278,14 @@ body {
         width: 220px;
     }
 
+    .box {
+        width: 115px;
+    }
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -269,33 +293,35 @@ body {
 <div class="whiteboard">
 
     <!-- SIDE LINES -->
+
     <div class="side-line left"></div>
     <div class="side-line right"></div>
 
-    <!-- FRONT -->
-    <h1 class="title">FRONT</h1>
 
-    <!-- MAIN BOARD -->
+    <!-- FRONT -->
+
+    <h1 class="title">
+        FRONT
+    </h1>
+
+
+    <!-- VEHICLE BOARD -->
+
     <div class="board">
 
+
         <!-- STAFF -->
+
         <div class="box staff">
             STAFF<br>
             CAR
         </div>
 
+
         <div class="connector"></div>
+
 
         <!-- POLICE -->
-        <div class="box police">
-            POLICE<br>
-            CAR<br>
-            [CHEVRON]<br>
-            CANON<br>
-            PPV 2021
-        </div>
-
-        <div class="connector"></div>
 
         <div class="box police">
             POLICE<br>
@@ -305,7 +331,21 @@ body {
             PPV 2021
         </div>
 
+
         <div class="connector"></div>
+
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [CHEVRON]<br>
+            CANON<br>
+            PPV 2021
+        </div>
+
+
+        <div class="connector"></div>
+
 
         <div class="box police">
             POLICE<br>
@@ -316,7 +356,9 @@ body {
             2019
         </div>
 
+
         <div class="connector"></div>
+
 
         <div class="box police">
             POLICE<br>
@@ -327,7 +369,9 @@ body {
             2019
         </div>
 
+
         <div class="connector"></div>
+
 
         <div class="box police">
             POLICE<br>
@@ -338,9 +382,12 @@ body {
             2019
         </div>
 
+
         <div class="connector"></div>
+
 
         <!-- FIRE -->
+
         <div class="box fire">
             FIRE CAR<br>
             MOBILE<br>
@@ -348,7 +395,9 @@ body {
             CENTER
         </div>
 
+
         <div class="connector"></div>
+
 
         <div class="box fire">
             FIRE CAR<br>
@@ -358,7 +407,9 @@ body {
             LADDER
         </div>
 
+
         <div class="connector"></div>
+
 
         <div class="box fire">
             FIRE CAR<br>
@@ -368,34 +419,31 @@ body {
             LADDER
         </div>
 
+
         <div class="connector"></div>
+
 
         <!-- SWAT -->
-        <div class="box swat">
-            SWAT<br>
-            BEARCAT
-        </div>
-
-        <div class="connector"></div>
 
         <div class="box swat">
             SWAT<br>
             BEARCAT
         </div>
 
+
         <div class="connector"></div>
+
+
+        <div class="box swat">
+            SWAT<br>
+            BEARCAT
+        </div>
+
+
+        <div class="connector"></div>
+
 
         <!-- POLICE -->
-        <div class="box police">
-            POLICE<br>
-            CAR<br>
-            [FALCON]<br>
-            INTERCEPTOR<br>
-            UTILITY<br>
-            2019
-        </div>
-
-        <div class="connector"></div>
 
         <div class="box police">
             POLICE<br>
@@ -406,31 +454,52 @@ body {
             2019
         </div>
 
+
         <div class="connector"></div>
+
+
+        <div class="box police">
+            POLICE<br>
+            CAR<br>
+            [FALCON]<br>
+            INTERCEPTOR<br>
+            UTILITY<br>
+            2019
+        </div>
+
+
+        <div class="connector"></div>
+
 
         <div class="box police">
             POLICE<br>
             CAR<br>
             [DODGE]<br>
             CHARGER<br>
-            Pursuit<br>
-            Interceptor
+            PURSUIT<br>
+            INTERCEPTOR
         </div>
+
 
         <div class="connector"></div>
 
+
         <!-- EMS -->
+
         <div class="box fire">
             EMS<br>
             [FALCON]<br>
-            Global<br>
+            GLOBAL<br>
             450<br>
-            Ambulance
+            AMBULANCE
         </div>
 
+
         <div class="connector"></div>
+
 
         <!-- POLICE -->
+
         <div class="box police">
             POLICE<br>
             CAR<br>
@@ -439,9 +508,11 @@ body {
             UTILITY<br>
             2019
         </div>
+
 
         <div class="connector"></div>
 
+
         <div class="box police">
             POLICE<br>
             CAR<br>
@@ -450,11 +521,17 @@ body {
             UTILITY<br>
             2019
         </div>
+
 
     </div>
 
+
     <!-- BACK -->
-    <h1 class="title back-title">BACK</h1>
+
+    <h1 class="title back-title">
+        BACK
+    </h1>
+
 
 </div>
 
