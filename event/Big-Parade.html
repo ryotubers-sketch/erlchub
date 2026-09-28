@@ -51,6 +51,66 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Infinite Image Carousel */
+.infinite-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.infinite-carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 20px;
+    animation: carouselScroll 30s linear infinite;
+}
+
+.infinite-carousel:hover .infinite-carousel-track {
+    animation-play-state: paused;
+}
+
+.infinite-carousel-item {
+    flex: 0 0 auto;
+    width: 320px;
+    height: 190px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #1a1a1a;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.infinite-carousel-item:hover {
+    transform: scale(1.04);
+    border-color: #fd7000;
+}
+
+.infinite-carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@keyframes carouselScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 10px));
+    }
+}
+
+@media (max-width: 640px) {
+    .infinite-carousel-item {
+        width: 250px;
+        height: 150px;
+    }
+}
+
 </style>
 </head>
 
@@ -247,6 +307,97 @@ body {
     }, 1000);
 
 </script>
+
+<!-- Infinite Carousel -->
+<section class="py-16 relative overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+        <p class="text-[#fd7000] font-semibold uppercase tracking-[0.25em] text-sm mb-3">
+            Explore
+        </p>
+
+        <h2 class="text-3xl md:text-4xl font-bold">
+            Featured ERLC Communities
+        </h2>
+    </div>
+
+    <div class="infinite-carousel">
+
+        <div class="infinite-carousel-track">
+
+            <!-- IMAGE 1 -->
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <!-- IMAGE 2 -->
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/icon.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <!-- IMAGE 3 -->
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <!-- IMAGE 4 -->
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/icon.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <!-- IMAGE 5 -->
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+
+            <!-- DUPLICATE SET FOR INFINITE LOOP -->
+
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/icon.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/icon.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+            <a href="https://example.com"
+               class="infinite-carousel-item">
+                <img src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                     alt="Featured ERLC Community">
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- CTA -->
