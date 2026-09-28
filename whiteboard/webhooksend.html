@@ -25,7 +25,8 @@ body {
     display: flex;
 }
 
-/* LEFT SIDE */
+
+/* LEFT */
 
 .left {
     width: 50%;
@@ -38,7 +39,7 @@ body {
     background: #080808;
 }
 
-.left img {
+.left img.background {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -48,12 +49,11 @@ body {
 .left-overlay {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,0.15),
-            rgba(0,0,0,0.45)
-        );
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.55)
+    );
 }
 
 .left-content {
@@ -87,7 +87,7 @@ body {
 }
 
 
-/* RIGHT SIDE */
+/* RIGHT */
 
 .right {
     width: 50%;
@@ -96,7 +96,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 50px;
-    background: #111111;
+    background: #111;
 }
 
 .panel {
@@ -119,7 +119,7 @@ body {
 }
 
 
-/* INPUTS */
+/* INPUT */
 
 .form-group {
     margin-bottom: 20px;
@@ -133,8 +133,7 @@ body {
     color: rgba(255,255,255,0.8);
 }
 
-input,
-textarea {
+input {
     width: 100%;
     background: #1c1c1c;
     border: 1px solid rgba(255,255,255,0.1);
@@ -145,33 +144,56 @@ textarea {
     transition: 0.2s;
 }
 
-input:focus,
-textarea:focus {
+input:focus {
     border-color: #fd7000;
     box-shadow: 0 0 0 3px rgba(253,112,0,0.12);
 }
 
-textarea {
-    min-height: 260px;
-    resize: vertical;
+
+/* READ ONLY JSON */
+
+.json-box {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+
+    background: #0b0b0b;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+
+    padding: 16px;
+
+    color: #d4d4d4;
+
     font-family: monospace;
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    user-select: text;
 }
 
 
-/* BUTTON */
+/* SEND BUTTON */
 
 .send-button {
     width: 100%;
     border: none;
     border-radius: 12px;
+
     padding: 15px;
+
     background: #fd7000;
     color: black;
+
     font-size: 16px;
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.2s;
 }
 
@@ -191,21 +213,27 @@ textarea {
     margin-top: 15px;
     padding: 13px 15px;
     border-radius: 10px;
+
     display: none;
+
     font-size: 14px;
 }
 
 .status.success {
     display: block;
+
     background: rgba(34,197,94,0.12);
     border: 1px solid rgba(34,197,94,0.25);
+
     color: #86efac;
 }
 
 .status.error {
     display: block;
+
     background: rgba(239,68,68,0.12);
     border: 1px solid rgba(239,68,68,0.25);
+
     color: #fca5a5;
 }
 
@@ -243,6 +271,7 @@ textarea {
 }
 
 </style>
+
 </head>
 
 
@@ -250,11 +279,13 @@ textarea {
 
 <div class="container">
 
+
     <!-- LEFT SIDE -->
 
     <section class="left">
 
         <img
+            class="background"
             src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
             alt="The Biggest Parade in ERLC"
         >
@@ -275,8 +306,8 @@ textarea {
                 <h2>Discord Webhook</h2>
 
                 <p>
-                    Enter your webhook and customise the message
-                    payload before sending it.
+                    Enter your Discord webhook below to send
+                    the event announcement.
                 </p>
 
             </div>
@@ -294,20 +325,21 @@ textarea {
                     id="webhook"
                     type="password"
                     placeholder="https://discord.com/api/webhooks/..."
+                    autocomplete="off"
                 >
 
             </div>
 
 
-            <!-- JSON -->
+            <!-- VIEW ONLY JSON -->
 
             <div class="form-group">
 
-                <label for="payload">
-                    Webhook JSON
+                <label>
+                    Message Preview
                 </label>
 
-                <textarea id="payload">{
+                <div class="json-box">{
   "flags": 32768,
   "components": [
     {
@@ -345,7 +377,7 @@ textarea {
       "accent_color": 16609280
     }
   ]
-}</textarea>
+}</div>
 
             </div>
 
@@ -356,7 +388,7 @@ textarea {
                 class="send-button"
                 onclick="sendWebhook()"
             >
-                <i>➤</i> Send to Discord
+                ➤ Send to Discord
             </button>
 
 
@@ -373,19 +405,17 @@ textarea {
 
 async function sendWebhook() {
 
-    const webhook = document
-        .getElementById("webhook")
-        .value
-        .trim();
+    const webhookInput =
+        document.getElementById("webhook");
 
-    const payloadText = document
-        .getElementById("payload")
-        .value
-        .trim();
+    const status =
+        document.getElementById("status");
 
-    const status = document
-        .getElementById("status");
+    const webhook =
+        webhookInput.value.trim();
 
+
+    /* Reset status */
 
     status.className = "status";
     status.textContent = "";
@@ -396,78 +426,186 @@ async function sendWebhook() {
     if (!webhook) {
 
         status.className = "status error";
-        status.textContent = "Please enter a Discord webhook URL.";
+
+        status.textContent =
+            "Please enter a Discord webhook URL.";
 
         return;
     }
 
 
-    /* Check JSON */
+    /* Make sure it is a Discord webhook */
 
-    let payload;
-
-    try {
-
-        payload = JSON.parse(payloadText);
-
-    } catch (error) {
+    if (
+        !webhook.startsWith("https://discord.com/api/webhooks/") &&
+        !webhook.startsWith("https://discordapp.com/api/webhooks/")
+    ) {
 
         status.className = "status error";
-        status.textContent = "The JSON is invalid. Please check your payload.";
+
+        status.textContent =
+            "Please enter a valid Discord webhook URL.";
 
         return;
     }
 
 
-    status.className = "status";
-    status.textContent = "";
+    /* Fixed Components V2 payload */
+
+    const payload = {
+
+        flags: 32768,
+
+        components: [
+
+            {
+                type: 17,
+
+                components: [
+
+                    {
+                        type: 12,
+
+                        items: [
+
+                            {
+                                media: {
+                                    url:
+                                    "https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+                                }
+                            }
+
+                        ]
+                    },
+
+
+                    {
+                        type: 10,
+
+                        content:
+                        "# 🎉 | The Biggest Parade in ERLC!\n"
+                    },
+
+
+                    {
+                        type: 14
+                    },
+
+
+                    {
+                        type: 10,
+
+                        content:
+                        "> We invite you to join us & ERLC Hub with the biggest parade in the brand new map!\n\n" +
+
+                        "`📋` - Sign up for 16 spots in the parade!\n" +
+                        "`👀` - Watch over 16 vehicles drive!\n" +
+                        "`👋` - Welcome the new map!\n" +
+                        "`🚀` - Experince a blast!"
+                    },
+
+
+                    {
+                        type: 14
+                    },
+
+
+                    {
+                        type: 10,
+
+                        content:
+                        "**Offical Event Time: <t:1791612000:R>**\n" +
+
+                        "[View More](<https://erlc.pages.dev/event/Big-Parade>)\n" +
+
+                        "[Join ERLC Hub's Discord](<https://discord.gg/Q8X9F7fpvB>)\n" +
+
+                        "-# Event Website Link: https://erlc.pages.dev/event/Big-Parade. This server gets special perks to advertise this. Authorised by Server Admins."
+                    }
+
+                ],
+
+                accent_color: 16609280
+            }
+
+        ]
+
+    };
 
 
     try {
 
-        const response = await fetch(webhook, {
+        /*
+            IMPORTANT:
+            Components V2 webhook messages need
+            with_components=true
+        */
 
-            method: "POST",
+        const separator =
+            webhook.includes("?")
+                ? "&"
+                : "?";
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+        const webhookURL =
+            webhook +
+            separator +
+            "with_components=true";
 
-            body: JSON.stringify(payload)
 
-        });
+        const response =
+            await fetch(webhookURL, {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(payload)
+
+            });
 
 
         if (response.ok) {
 
-            status.className = "status success";
-            status.textContent = "✓ Successfully sent to Discord!";
+            status.className =
+                "status success";
+
+            status.textContent =
+                "✓ Successfully sent to Discord!";
+
+            webhookInput.value = "";
 
         } else {
 
-            let errorMessage = "";
+            let errorText = "";
 
             try {
-                errorMessage = await response.text();
+                errorText = await response.text();
             } catch {
-                errorMessage = "";
+                errorText = "";
             }
 
-            status.className = "status error";
+
+            status.className =
+                "status error";
 
             status.textContent =
                 "Discord rejected the webhook. Status: " +
                 response.status +
-                (errorMessage ? " — " + errorMessage : "");
+                (errorText
+                    ? " — " + errorText
+                    : "");
 
         }
 
     } catch (error) {
 
-        status.className = "status error";
+        status.className =
+            "status error";
 
         status.textContent =
-            "Could not send the webhook. Check the webhook URL and browser permissions.";
+            "Could not connect to Discord. Check your webhook and try again.";
 
     }
 
@@ -477,3 +615,4 @@ async function sendWebhook() {
 
 </body>
 </html>
+
