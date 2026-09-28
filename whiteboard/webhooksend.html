@@ -1,0 +1,503 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ERLC Hub - Discord Embed Sender</title>
+
+<link rel="icon" href="https://erlc.pages.dev/icon.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0f0f0f;
+    color: white;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* LEFT SIDE */
+
+.left {
+    width: 50%;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080808;
+}
+
+.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.left-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.45)
+        );
+}
+
+.left-content {
+    position: relative;
+    z-index: 2;
+    padding: 50px;
+    max-width: 650px;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+.left h1 {
+    font-size: 52px;
+    line-height: 1.05;
+    margin: 0 0 20px;
+}
+
+.left h1 span {
+    color: #fd7000;
+}
+
+.left p {
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+/* RIGHT SIDE */
+
+.right {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: #111111;
+}
+
+.panel {
+    width: 100%;
+    max-width: 600px;
+}
+
+.panel-header {
+    margin-bottom: 30px;
+}
+
+.panel-header h2 {
+    font-size: 32px;
+    margin: 0 0 10px;
+}
+
+.panel-header p {
+    margin: 0;
+    color: rgba(255,255,255,0.5);
+}
+
+
+/* INPUTS */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.8);
+}
+
+input,
+textarea {
+    width: 100%;
+    background: #1c1c1c;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: white;
+    padding: 14px 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #fd7000;
+    box-shadow: 0 0 0 3px rgba(253,112,0,0.12);
+}
+
+textarea {
+    min-height: 260px;
+    resize: vertical;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* BUTTON */
+
+.send-button {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    background: #fd7000;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.send-button:hover {
+    background: #ff8426;
+    transform: translateY(-1px);
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+
+/* STATUS */
+
+.status {
+    margin-top: 15px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    display: none;
+    font-size: 14px;
+}
+
+.status.success {
+    display: block;
+    background: rgba(34,197,94,0.12);
+    border: 1px solid rgba(34,197,94,0.25);
+    color: #86efac;
+}
+
+.status.error {
+    display: block;
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.25);
+    color: #fca5a5;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .left {
+        min-height: 450px;
+    }
+
+    .right {
+        min-height: auto;
+        padding: 35px 20px;
+    }
+
+    .left-content {
+        padding: 35px;
+    }
+
+    .left h1 {
+        font-size: 40px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+
+    <section class="left">
+
+        <img
+            src="https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+            alt="The Biggest Parade in ERLC"
+        >
+
+        <div class="left-overlay"></div>
+
+        <div class="left-content">
+
+            <img
+                class="logo"
+                src="https://erlc.pages.dev/icon.png"
+                alt="ERLC Hub"
+            >
+
+            <h1>
+                The Biggest Parade
+                <span>in ERLC!</span>
+            </h1>
+
+            <p>
+                Send your ERLC Hub event announcement directly
+                to your Discord server using a webhook.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+
+    <section class="right">
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <h2>Discord Webhook</h2>
+
+                <p>
+                    Enter your webhook and customise the message
+                    payload before sending it.
+                </p>
+
+            </div>
+
+
+            <!-- WEBHOOK -->
+
+            <div class="form-group">
+
+                <label for="webhook">
+                    Discord Webhook URL
+                </label>
+
+                <input
+                    id="webhook"
+                    type="password"
+                    placeholder="https://discord.com/api/webhooks/..."
+                >
+
+            </div>
+
+
+            <!-- JSON -->
+
+            <div class="form-group">
+
+                <label for="payload">
+                    Webhook JSON
+                </label>
+
+                <textarea id="payload">{
+  "flags": 32768,
+  "components": [
+    {
+      "type": 17,
+      "components": [
+        {
+          "type": 12,
+          "items": [
+            {
+              "media": {
+                "url": "https://erlc.pages.dev/images/TheBIggestParadeinERLC.png"
+              }
+            }
+          ]
+        },
+        {
+          "type": 10,
+          "content": "# 🎉 | The Biggest Parade in ERLC!\n"
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 10,
+          "content": "> We invite you to join us & ERLC Hub with the biggest parade in the brand new map!\n\n`📋` - Sign up for 16 spots in the parade!\n`👀` - Watch over 16 vehicles drive!\n`👋` - Welcome the new map!\n`🚀` - Experince a blast!"
+        },
+        {
+          "type": 14
+        },
+        {
+          "type": 10,
+          "content": "**Offical Event Time: <t:1791612000:R>**\n[View More](<https://erlc.pages.dev/event/Big-Parade>)\n[Join ERLC Hub's Discord](<https://discord.gg/Q8X9F7fpvB>)\n-# Event Website Link: https://erlc.pages.dev/event/Big-Parade. This server gets special perks to advertise this. Authorised by Server Admins."
+        }
+      ],
+      "accent_color": 16609280
+    }
+  ]
+}</textarea>
+
+            </div>
+
+
+            <!-- SEND -->
+
+            <button
+                class="send-button"
+                onclick="sendWebhook()"
+            >
+                <i>➤</i> Send to Discord
+            </button>
+
+
+            <div id="status" class="status"></div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+async function sendWebhook() {
+
+    const webhook = document
+        .getElementById("webhook")
+        .value
+        .trim();
+
+    const payloadText = document
+        .getElementById("payload")
+        .value
+        .trim();
+
+    const status = document
+        .getElementById("status");
+
+
+    status.className = "status";
+    status.textContent = "";
+
+
+    /* Check webhook */
+
+    if (!webhook) {
+
+        status.className = "status error";
+        status.textContent = "Please enter a Discord webhook URL.";
+
+        return;
+    }
+
+
+    /* Check JSON */
+
+    let payload;
+
+    try {
+
+        payload = JSON.parse(payloadText);
+
+    } catch (error) {
+
+        status.className = "status error";
+        status.textContent = "The JSON is invalid. Please check your payload.";
+
+        return;
+    }
+
+
+    status.className = "status";
+    status.textContent = "";
+
+
+    try {
+
+        const response = await fetch(webhook, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(payload)
+
+        });
+
+
+        if (response.ok) {
+
+            status.className = "status success";
+            status.textContent = "✓ Successfully sent to Discord!";
+
+        } else {
+
+            let errorMessage = "";
+
+            try {
+                errorMessage = await response.text();
+            } catch {
+                errorMessage = "";
+            }
+
+            status.className = "status error";
+
+            status.textContent =
+                "Discord rejected the webhook. Status: " +
+                response.status +
+                (errorMessage ? " — " + errorMessage : "");
+
+        }
+
+    } catch (error) {
+
+        status.className = "status error";
+
+        status.textContent =
+            "Could not send the webhook. Check the webhook URL and browser permissions.";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
